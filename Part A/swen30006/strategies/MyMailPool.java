@@ -107,7 +107,7 @@ public class MyMailPool implements IMailPool {
     	deliveryMailItems.sort(sortByDestFloor);
     }
     
-    public boolean isEmptyStack() {
+    public boolean isEmptyList() {
     	return deliveryMailItems.isEmpty();
     }
  

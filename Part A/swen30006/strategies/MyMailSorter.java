@@ -21,7 +21,7 @@ public class MyMailSorter implements IMailSorter {
             	if (tube.isEmpty()) {
             		myMailPool.readyForDeliver();
             	}
-            	if (!myMailPool.isEmptyStack()) {
+            	if (!myMailPool.isEmptyList()) {
 	            	/** Gets the first item from the ArrayList */
 		            MailItem mailItem = myMailPool.get();
 		            /** Add the item to the tube */
