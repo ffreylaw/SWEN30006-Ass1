@@ -104,7 +104,7 @@ public class MyMailSorter implements IMailSorter {
     	 */
     	if (!isShortDistance) {
     		/** If the mail item is short distance, then sort the temporary array by size
-        	 *  from smallest to largest, then get the item with the earliest arrival time
+        	 *  from small to large, then get the item with the earliest arrival time
         	 *  in the array, and then add that item to the delivery array
         	 */
     		Comparator<MailItem> sortBySize = (MailItem o1, MailItem o2) -> o1.getSize() - o2.getSize();
@@ -129,8 +129,19 @@ public class MyMailSorter implements IMailSorter {
     		deliveryMailItems.add(tempMailItems.getFirst());
     	}
     	
+    	/** Set the flag whether the item in the delivery array
+    	 *  that its destination floor is in the lower floor 
+    	 */
     	boolean isLowerDestFloor = deliveryMailItems.getFirst().getDestFloor() <= Building.MAILROOM_LOCATION;
+    	
+    	/** Initialize size of the delivery array
+    	 *  Note: The maximum capacity of the delivery array is the same as the tube 
+    	 */
     	int size = deliveryMailItems.getFirst().getSize();
+    	
+    	/** Iterate through all mail items and finding the suitable items that 
+    	 *  respect to the given item already in the delivery array
+    	 */
     	for (MailItem item: allMailItems) {
     		if (item != deliveryMailItems.getFirst()) {
     			if (size + item.getSize() <= tube.MAXIMUM_CAPACITY) {
@@ -152,6 +163,10 @@ public class MyMailSorter implements IMailSorter {
     		}
     	}
     	
+    	/** Finalize the delivery array;
+    	 *  To sort the array by destination floor and the deliver order 
+    	 *  is going to be from low to high destination floor when delivering
+    	 */
     	Comparator<MailItem> sortByDestFloor = (MailItem o1, MailItem o2) -> o2.getDestFloor() - o1.getDestFloor();
     	deliveryMailItems.sort(sortByDestFloor);
     }
@@ -171,12 +186,12 @@ public class MyMailSorter implements IMailSorter {
 
 		@Override
 		public int compare(MailItem o1, MailItem o2) {
-			double o1_score = priority_level_hashmap.get(o1.getPriorityLevel());
-			double o2_score = priority_level_hashmap.get(o2.getPriorityLevel());
+			double o1_priority = priority_level_hashmap.get(o1.getPriorityLevel());
+			double o2_priority = priority_level_hashmap.get(o2.getPriorityLevel());
 			
-			if (o1_score > o2_score) {
+			if (o1_priority > o2_priority) {
 				return -1;
-			} else if (o1_score < o2_score) {
+			} else if (o1_priority < o2_priority) {
 				return 1;
 			}
 			return 0;
