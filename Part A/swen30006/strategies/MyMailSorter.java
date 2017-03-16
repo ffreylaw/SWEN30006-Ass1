@@ -58,14 +58,21 @@ public class MyMailSorter implements IMailSorter {
 		return false;
 	}
 	
+	/** Generate the delivery array that ready for 
+	 *  adding delivery mail items to the tube
+	 * @param tube
+	 */
 	public void readyForDeliver(StorageTube tube) {
-		/** Get all mail items from the mail pool */
+		/** Get all mail items from the mail pool 
+		 */
 		LinkedList<MailItem> allMailItems = myMailPool.getAllMailItems();
 		
-		/** Clear delivery array due to new delivery attempt */
+		/** Clear delivery array due to new delivery attempt 
+		 */
     	deliveryMailItems.clear();
     	
-    	/** Sort all mail items by priority level - HIGH -> MEDIUM -> LOW */
+    	/** Sort all mail items by priority level: HIGH -> MEDIUM -> LOW
+    	 */
     	Comparator<MailItem> sortByPriority = new MailItemComparator();
     	allMailItems.sort(sortByPriority);
     	
@@ -164,8 +171,8 @@ public class MyMailSorter implements IMailSorter {
     	}
     	
     	/** Finalize the delivery array;
-    	 *  To sort the array by destination floor and the deliver order 
-    	 *  is going to be from low to high destination floor when delivering
+    	 *  To sort the array by destination floor and the order will be from high to low
+    	 *  destination floor when pushing into the tube (stack)
     	 */
     	Comparator<MailItem> sortByDestFloor = (MailItem o1, MailItem o2) -> o2.getDestFloor() - o1.getDestFloor();
     	deliveryMailItems.sort(sortByDestFloor);
