@@ -107,7 +107,7 @@ public class MyMailSorter implements IMailSorter {
 		 *  which within the range of the longest distance from mail room to destination floor divided by 2.
 		 */
 		int shortDistance = Math.abs(Building.FLOORS - Building.MAILROOM_LOCATION) > Math.abs(Building.LOWEST_FLOOR - Building.MAILROOM_LOCATION) ?
-							Math.abs(Building.FLOORS - Building.MAILROOM_LOCATION)/2 : Math.abs(Building.LOWEST_FLOOR - Building.MAILROOM_LOCATION)/2;
+					Math.abs(Building.FLOORS - Building.MAILROOM_LOCATION)/2 : Math.abs(Building.LOWEST_FLOOR - Building.MAILROOM_LOCATION)/2;
 		boolean isShortDistance = Math.abs(tempMailItems.getFirst().getDestFloor() - Building.MAILROOM_LOCATION) < shortDistance;
 
 		/** Selecting the most suitable item to be deliver at current state
