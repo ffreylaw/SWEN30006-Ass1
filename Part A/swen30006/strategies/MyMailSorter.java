@@ -48,7 +48,7 @@ public class MyMailSorter implements IMailSorter {
 		 */
 		catch (TubeFullException e) {
 			return true;
-		}      
+		}
 		/** 
 		 * Handles the case where the last delivery time has elapsed and there are no more
 		 * items to deliver.
