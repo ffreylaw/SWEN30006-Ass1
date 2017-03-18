@@ -11,12 +11,14 @@ import automail.MailItem;
 import automail.StorageTube;
 import exceptions.TubeFullException;
 
+
 public class MyMailSorter implements IMailSorter {
 	
 	private MyMailPool myMailPool;
 	
-	/** This delivery array contains mail items 
-	 *  that are going to be in the storage tube of the robot
+	/** 
+	 * This delivery array contains mail items 
+	 * that are going to be in the storage tube of the robot
 	 */
 	private LinkedList<MailItem> deliveryMailItems;
 	
@@ -58,8 +60,9 @@ public class MyMailSorter implements IMailSorter {
 		return false;
 	}
 	
-	/** Generate the delivery array that ready for 
-	 *  adding delivery mail items to the tube
+	/** 
+	 * Generate the delivery array that ready for 
+	 * adding delivery mail items to the tube
 	 * @param tube
 	 */
 	public void readyForDeliver(StorageTube tube) {
