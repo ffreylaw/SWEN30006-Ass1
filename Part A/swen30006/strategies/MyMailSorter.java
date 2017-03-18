@@ -42,9 +42,9 @@ public class MyMailSorter implements IMailSorter {
 				return true;
 			}
 		}
-		/** Refer to TubeFullException.java --
-		 *  Usage below illustrates need to handle this exception. However you should
-		 *  structure your code to avoid the need to catch this exception for normal operation
+		/** Here will never catch any exceptions since the delivery array 
+		 *  has already taken the capacity of the tube in consideration,
+		 *  which the delivery array is perfectly fit the tube
 		 */
 		catch (TubeFullException e) {
 			return true;
