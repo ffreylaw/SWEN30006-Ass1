@@ -53,12 +53,6 @@ public class Robot {
                 // System.out.println("Tube total size: "+tube.getTotalOfSizes());
                 /** If the StorageTube is ready and the Robot is waiting in the mailroom then start the delivery */
                 if(go){
-                	//
-                	System.out.println("Start Delievering...");
-                	System.out.println("Clock Time: " + Clock.Time());
-                	System.out.println(tube.getTotalOfSizes());
-                	System.out.println(tube.toString());
-                	//
                 	current_state = RobotState.DELIVERING;
                 	setRoute();
                 }

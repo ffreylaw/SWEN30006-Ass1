@@ -1,3 +1,7 @@
+/* SWEN30006 Software Modeling and Design
+ * Assignment 1 Part A
+ * Author: Geoffrey Law <glaw> (759218)
+ */
 package strategies;
 
 import java.util.LinkedList;
